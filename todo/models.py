@@ -82,11 +82,12 @@ class Task:
 class Project:
     MAX_NAME_LENGTH = 30
     MAX_DESCRIPTION_LENGTH = 150
+    @staticmethod
     def name_checker(name: str) -> bool:
         if len(name) > Project.MAX_NAME_LENGTH:
             return False
         return True
-
+    @staticmethod
     def description_checker(description: str) -> bool:
         if len(description) > Project.MAX_DESCRIPTION_LENGTH:
             return False
@@ -109,10 +110,11 @@ class Project:
             raise ValueError(f"Cannot add task with {len(self.tasks)} tasks")
         self.tasks.append(task)
 
-    def remove_task(self, task: Task):
+    def remove_task(self, task: Task) -> str:
         if task not in self.tasks:
             raise ValueError(f"Task {task} does not exist")
         self.tasks.remove(task)
+        return "Task removed"
 
     def update_name(self, name):
         if not Project.name_checker(name):
