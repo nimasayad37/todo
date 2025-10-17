@@ -19,21 +19,37 @@ This project allows you to manage projects and tasks in memory with a clear CLI 
 
 ## Project Structure
 
+
 todo_app/
+
 │
+
 ├── todo/ # Application modules
+
 │ ├── init.py
+
 │ ├── models.py # Task & Project classes
+
 │ ├── project_manager.py
+
 │ └── task_manager.py
+
 │
+
 ├── tests/ # Pytest unit tests
+
 │ └── test_models.py
+
 │
+
 ├── cli.py # Command-line interface
+
 ├── main.py # Entry point for running the CLI
+
 ├── pyproject.toml # Poetry configuration
+
 ├── poetry.lock
+
 └── .env # Environment variables (e.g., MAX_NUMBER_OF_PROJECTS)
 
 
@@ -58,14 +74,5 @@ poetry install
 git clone https://github.com/nimasayad37/todo.git
 cd todo_app
 
-### Running this app
+---
 
-poetry run python main.py
-
-** Branching Strategy
-
-main → stable release branch
-
-develop → active development branch
-
-feature/ → individual feature branches**
