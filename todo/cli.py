@@ -58,8 +58,8 @@ def list_projects() -> None:
             print(f"{i}. {p.name} __ {p.description}")
 
 def add_project() -> None:
-    name = input("Project name").strip()
-    description = input("Project description").strip()
+    name = input("Project name: ").strip()
+    description = input("Project description: ").strip()
 
     try:
         project = Project(name=name, description=description)
@@ -98,7 +98,7 @@ def task_menu() -> None:
         print("4. Remove Task")
         print("5. Back to Main Menu")
 
-        choice = input("Choose an option: ").strip
+        choice = input("Choose an option: ").strip()
 
         if choice == "1":
             list_tasks()
@@ -114,7 +114,7 @@ def task_menu() -> None:
             print("Invalid choice")
 
 def list_tasks() -> None:
-    project_name = input("Enter project name:").strip()
+    project_name = input("Enter project name: ").strip()
     try:
         project = ProjectManager.get_project(project_name)
         tasks = TaskManager.list_tasks(project)
@@ -127,26 +127,26 @@ def list_tasks() -> None:
         print(e)
 
 def add_task() -> None:
-    project_name = input("project name:").strip()
+    project_name = input("project name: ").strip()
     try:
         project = ProjectManager.get_project(project_name)
     except ValueError as e:
         print(e)
         return
-    name = input("Enter new task name:").strip()
-    description = input("Enter new task description:").strip()
-    deadline = input("Enter new task deadline:").strip()
+    name = input("Enter new task name: ").strip()
+    description = input("Enter new task description: ").strip()
+    deadline = input("Enter new task deadline: ").strip()
 
     try:
         task = Task(name=name, description=description, deadline=deadline)
         TaskManager.add_task(project=project, task=task)
-        print(f"Task {task.name} added to project {project.name}")
+        print(f"Task {task.name} added to project {project.name}.")
     except ValueError as e:
         print(e)
 
 def edit_task() -> None:
-    project_name = input("project name:").strip()
-    task_name = input("Enter new task name:").strip()
+    project_name = input("project name: ").strip()
+    task_name = input("Enter new task name: ").strip()
 
     new_name = input("Enter new task name(leave blank to keep):").strip() or None
     new_description = input("Enter new task description:(leave blank to keep):").strip() or None
