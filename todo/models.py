@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MAX_NUMBER_OF_TASKS = int(os.getenv("MAX_NUMBER_OF_TASKS"))
+MAX_NUMBER_OF_TASKS = int(os.getenv("MAX_NUMBER_OF_TASK"))
 
 class Task:
     MAX_NAME_LENGTH = 30
@@ -114,7 +114,7 @@ class Project:
         if task not in self.tasks:
             raise ValueError(f"Task {task} does not exist")
         self.tasks.remove(task)
-        return "Task removed"
+        return f"Task {task.name} removed from {self.name}"
 
     def update_name(self, name):
         if not Project.name_checker(name):
