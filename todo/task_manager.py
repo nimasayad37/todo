@@ -1,10 +1,7 @@
-from typing import Optional, List
-from datetime import datetime
+from config import Optional, List, datetime, load_dotenv
 
 from todo.models import Task, Project
 from todo.project_manager import ProjectManager
-
-from dotenv import load_dotenv
 
 load_dotenv()
 

@@ -1,11 +1,8 @@
-from typing import Literal, List
-from datetime import datetime
-import os
-
 from dotenv import load_dotenv
 
-load_dotenv()
+from config import os, datetime, List, Literal
 
+load_dotenv()
 MAX_NUMBER_OF_TASKS = int(os.getenv("MAX_NUMBER_OF_TASK"))
 
 class Task:
