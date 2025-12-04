@@ -1,6 +1,6 @@
-from config import List, Optional, os, load_dotenv
+from app.config import List, Optional, os, load_dotenv
 
-from todo.models import Project
+from app.models.project import Project
 load_dotenv()
 
 MAX_NUMBER_OF_PROJECTS = int(os.getenv("MAX_NUMBER_OF_PROJECT"))

@@ -1,6 +1,9 @@
-from todo.project_manager import ProjectManager
-from todo.task_manager import TaskManager
-from todo.models import Task, Project
+from app.services.project_service import ProjectManager
+from app.services.task_service import TaskManager
+from app.models.project import Project
+from app.models.task import Task
+
+
 
 #-------------------MAIN MENU---------------
 

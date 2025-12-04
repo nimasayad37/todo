@@ -1,7 +1,8 @@
-from config import Optional, List, datetime, load_dotenv
+from app.config import Optional, List, datetime, load_dotenv
 
-from todo.models import Task, Project
-from todo.project_manager import ProjectManager
+from app.models.task import Task
+from app.models.project import Project
+from app.services.project_service import ProjectManager
 
 load_dotenv()
 

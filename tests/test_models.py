@@ -1,9 +1,9 @@
 import pytest
 from datetime import datetime, timedelta
 
-from todo.models import Task, Project
-from todo.project_manager import ProjectManager
-from todo.task_manager import TaskManager
+from app.models.models import Task, Project
+from app.services import ProjectManager
+from app.services.task_service import TaskManager
 
 # ---------------- TASK TESTS ----------------
 

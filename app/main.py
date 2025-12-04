@@ -1,4 +1,4 @@
-from todo.cli import main_menu
+from cli.console import main_menu
 
 def main():
     main_menu()
