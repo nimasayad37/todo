@@ -1,11 +1,31 @@
 from dotenv import load_dotenv
+import os
+from datetime import datetime
+#from app.config import Literal
+from typing import Literal
+from sqlalchemy import Column, Integer, String, Enum, ForeignKey, DateTime
+from sqlalchemy.orm import relationship
+from app.db.session import Base
+import enum
 
-from app.config import os, datetime, Literal
+class StatusEnum(str, enum.Enum):
+    todo = "todo"
+    doing = "doing"
+    done = "done"
 
-load_dotenv()
-MAX_NUMBER_OF_TASKS = int(os.getenv("MAX_NUMBER_OF_TASK"))
+load_dotenv(dotenv_path=".env.dev")
+MAX_NUMBER_OF_TASKS = int(os.getenv("MAX_NUMBER_OF_TASK", 100))
 
-class Task:
+class Task(Base):
+    __tablename__ = "tasks"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(30), nullable=False)
+    description = Column(String(150), nullable=False)
+    status = Column(Enum(StatusEnum, name="task_status_enum"), nullable=False, default=StatusEnum.todo)
+    deadline = Column(DateTime(timezone=False), nullable=False)
+    project_id = Column(Integer, ForeignKey("projects.id"))
+    project = relationship("Project", back_populates="tasks")
     MAX_NAME_LENGTH = 30
     MAX_DESCRIPTION_LENGTH = 150
     ALLOWED_STATUS_CHOICES = ["todo", "done", "doing"]

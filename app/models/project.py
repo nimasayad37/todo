@@ -1,13 +1,26 @@
 from dotenv import load_dotenv
-from task import Task
-from app.config import os, List
+import os
+from typing import List
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
+from app.db.session import Base
+from app.models.task import Task
 
-load_dotenv()
-MAX_NUMBER_OF_TASKS = int(os.getenv("MAX_NUMBER_OF_TASK"))
+load_dotenv(dotenv_path='.env.dev')
+MAX_NUMBER_OF_TASKS = int(os.getenv("MAX_NUMBER_OF_TASK", 100   ))
 
-class Project:
+class Project(Base):
+
+    __tablename__ = "projects"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(30), nullable=False)
+    description = Column(String(150), nullable=False)
+
+    tasks = relationship("Task", back_populates="project", cascade="all, delete-orphan")
+
     MAX_NAME_LENGTH = 30
     MAX_DESCRIPTION_LENGTH = 150
+
     @staticmethod
     def name_checker(name: str) -> bool:
         if len(name) > Project.MAX_NAME_LENGTH:
